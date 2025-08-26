@@ -1,0 +1,304 @@
+.car-filter-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 10px;
+    min-height: 80vh;
+    padding: 20px;
+    box-sizing: border-box; /* Добавляем box-sizing */
+  }
+  
+  /* Левая панель фильтров */
+  .filter-panel {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 15px;
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+    box-sizing: border-box; /* Добавляем box-sizing */
+    width: 250px; /* Убедимся, что ширина 100% */
+  }
+  
+  /* Поиск */
+  .filter-group {
+    margin-bottom: 20px;
+    width: 100%; /* Убедимся, что ширина 100% */
+    box-sizing: border-box; /* Добавляем box-sizing */
+  }
+
+  .filter-panel h2 {
+    margin-bottom: 20px;
+    color: var(--text-primary);
+    font-size: 18px;
+  }
+  
+  /* Хлебные крошки */
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  
+  .breadcrumbs span {
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 14px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+  
+  .breadcrumbs span.active {
+    color: var(--primary-color);
+    background: var(--accent-color);
+  }
+  
+  .breadcrumbs span:hover:not(.breadcrumb-separator) {
+    color: var(--primary-color);
+  }
+  
+  .breadcrumb-separator {
+    cursor: default !important;
+    padding: 0 !important;
+  }
+  
+  .search-input {
+    position: relative;
+    width: 100%; /* Убедимся, что ширина 100% */
+    box-sizing: border-box; /* Добавляем box-sizing */
+  }
+  
+  .search-input input {
+    width: 100%;
+    padding: 12px 15px 12px 40px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 14px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    box-sizing: border-box; /* Важно: добавляем box-sizing */
+  }
+  
+  .search-input input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+  }
+  
+  .search-input input:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+  }
+  /* Информация о выборе */
+  .selection-info {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  .selected-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: var(--bg-secondary);
+    border-radius: 6px;
+    margin-bottom: 8px;
+  }
+  
+  .selected-item strong {
+    margin-right: 8px;
+    color: var(--text-primary);
+  }
+  
+  .selected-item span {
+    flex: 1;
+    color: var(--text-primary);
+  }
+  
+  .remove-icon {
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+  }
+  
+  .remove-icon:hover {
+    color: #ff4444;
+    background: rgba(255, 68, 68, 0.1);
+  }
+  
+  /* Кнопки */
+  .clear-button, .back-button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+  }
+  
+  .clear-button:hover {
+    background: var(--accent-color);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+  }
+  
+  .back-button {
+    margin-top: 15px;
+  }
+  
+  .back-button:hover {
+    background: var(--bg-secondary);
+    border-color: var(--primary-color);
+  }
+  
+  /* Правая панель результатов */
+  .results-panel {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  
+  .results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .results-header h2 {
+    color: var(--text-primary);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .clear-results {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .clear-results:hover {
+    text-decoration: underline;
+  }
+  
+  /* Сетка контента */
+  .content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+  }
+  
+  .content-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+  }
+  
+  .content-card:hover {
+    transform: translateY(0px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-color: var(--primary-color);
+  }
+  
+  .content-card.detailed {
+    text-align: left;
+    cursor: default;
+  }
+  
+  .content-card.detailed:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: var(--border-color);
+  }
+  
+  .content-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 15px;
+  }
+  
+  .content-card h3 {
+    margin: 0 0 10px 0;
+    color: var(--text-primary);
+    font-size: 18px;
+  }
+  
+  .content-card p {
+    margin: 5px 0;
+    color: var(--text-secondary);
+    font-size: 14px;
+  }
+  
+  .engines-list {
+    margin-top: 15px;
+  }
+  
+  .engines-list strong {
+    color: var(--text-primary);
+  }
+  
+  .engines-list ul {
+    margin: 8px 0 0 0;
+    padding-left: 20px;
+  }
+  
+  .engines-list li {
+    color: var(--text-secondary);
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+  
+  /* Адаптивность */
+  @media (max-width: 968px) {
+    .car-filter-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .filter-panel {
+      position: stickly;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .breadcrumbs {
+      font-size: 12px;
+    }
+  }
