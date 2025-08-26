@@ -1,5 +1,5 @@
 import React from 'react';
-import CarFilter from '../components/CarFilter';
+import CarFilter from '../components/common/CarFilter';
 
 const Catalog = () => {
   return (

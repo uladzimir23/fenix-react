@@ -45,7 +45,7 @@
 .main-content {
   flex: 1;
   padding: 0px;
-  margin-left: 275px;  
+  margin-left: 275px;
   transition: margin-left 0.3s ease;
 }
 
