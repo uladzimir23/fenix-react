@@ -1,0 +1,158 @@
+.car-catalog {
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .car-catalog h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--text-primary);
+  }
+  
+  .catalog-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+    min-height: 600px;
+  }
+  
+  .brands-list h2 {
+    margin-bottom: 20px;
+    color: var(--text-primary);
+  }
+  
+  .brands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+  }
+  
+  .brand-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: var(--bg-primary);
+  }
+  
+  .brand-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+  
+  .brand-card.selected {
+    border-color: var(--primary-color);
+    background-color: var(--accent-color);
+  }
+  
+  .brand-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 10px;
+  }
+  
+  .brand-name {
+    font-weight: 500;
+    text-align: center;
+    color: var(--text-primary);
+  }
+  
+  .details-panel {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 20px;
+    min-height: 500px;
+  }
+  
+  .bmw-details h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+  }
+  
+  .models-list {
+    display: grid;
+    gap: 15px;
+  }
+  
+  .model-card {
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .model-card:hover {
+    border-color: var(--primary-color);
+    background-color: var(--bg-secondary);
+  }
+  
+  .model-card h4 {
+    margin: 0;
+    color: var(--text-primary);
+  }
+  
+  .back-button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+  
+  .back-button:hover {
+    text-decoration: underline;
+  }
+  
+  .generation-card {
+    background: var(--bg-secondary);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 4px solid var(--primary-color);
+  }
+  
+  .generation-card h4 {
+    margin: 0 0 10px 0;
+    color: var(--text-primary);
+  }
+  
+  .engines-list h5 {
+    margin: 10px 0 5px 0;
+    color: var(--text-primary);
+  }
+  
+  .engines-list ul {
+    margin: 0;
+    padding-left: 20px;
+  }
+  
+  .engines-list li {
+    margin-bottom: 5px;
+    color: var(--text-secondary);
+  }
+  
+  .brand-info, .no-selection {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-secondary);
+  }
+  
+  @media (max-width: 968px) {
+    .catalog-content {
+      grid-template-columns: 1fr;
+    }
+    
+    .brands-grid {
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+  }
