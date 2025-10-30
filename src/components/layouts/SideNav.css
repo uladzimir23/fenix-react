@@ -6,18 +6,17 @@
     .side-nav {
       display: block;
       position: fixed;
-      left: 12px;
-      top: 12px;
-      bottom: 12px;
-      width: 270px;
-      background-color: var(--bg-primary);
+      left: 20px;
+      top: 20px;
+      bottom: 20px;
+      width: 272px;
+      background-color: var(--bg-secondary);
       border-radius: 22px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-      border: 1px solid var(--border-color);
+      box-shadow: var(--box-shadow-primary);
       z-index: 1000;
       overflow-y: auto;
     }
-  
+
     .nav-content {
       height: 100%;
       display: flex;
@@ -27,7 +26,13 @@
     .logo-section {
       display: flex;
       align-items: center;
-      padding: 16px 16px 0 16px;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 10px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 10px;
+      margin-top: 10px;
     }
   
     .logo-icon {
@@ -37,25 +42,18 @@
     }
   
     .logo-text {
-      font-family: 'Roboto Mono', monospace;
       font-size: 24px;
       font-weight: 600;
       color: var(--text-primary);
     }
   
-    .divider {
-      height: 2px;
-      background-color: var(--border-color);
-      margin: 12px 0;
-    }
-  
+
     .nav-section {
       flex: 1;
       padding: 0 16px;
     }
   
     .section-label {
-      font-family: 'Roboto Mono', monospace;
       font-size: 12px;
       color: var(--text-secondary);
       margin-bottom: 12px;
@@ -69,16 +67,21 @@
       align-items: left;
       padding: 10px;
       border-radius: 12px;
-      margin-bottom: 12px;
+      margin-bottom: 5px;
       cursor: pointer;
-      transition: all 0.35s ease-in-out;
+      transition: all 0.2s ease;
       position: relative;
       text-align: left;
       font-size: 16px;
     }
+
+    .side-nav.collapsed .nav-item:hover {
+      scale: 0.95;
+    }
   
     .nav-item:hover {
       background-color: var(--bg-secondary);
+      scale: 0.995;
     }
   
     .nav-item.active {
@@ -89,26 +92,31 @@
       font-size: 20px;
       margin-right: 12px;
       color: var(--text-primary);
+
     }
   
+    .nav-item:hover .nav-icon {
+      color: var(--primary-color);
+    }
+  
+
     .nav-item.active .nav-icon {
       color: var(--primary-color);
     }
   
     .nav-label {
-      font-family: 'Roboto Mono', monospace;
       color: var(--text-primary);
       flex: 1;
       
     }
   
     .badge {
-      background-color: var(--primary-color);
-      color: white;
+      background-color: var(--accent-color);
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
       padding: 4px 8px;
-      border-radius: 8px;
+      border-radius: 50px;
       font-size: 12px;
-      font-family: 'Roboto Mono', monospace;
     }
   
     .theme-switcher {
@@ -173,14 +181,12 @@
     }
   
     .user-name {
-      font-family: 'Roboto Mono', monospace;
       font-size: 16px;
       color: var(--text-primary);
       font-weight: 500;
     }
   
     .user-email {
-      font-family: 'Roboto Mono', monospace;
       font-size: 12px;
       color: var(--text-secondary);
       margin-top: 4px;
@@ -193,7 +199,7 @@
   }
   
   .side-nav.collapsed {
-    width: 80px;
+    width: 74px;
   }
   
   .side-nav.collapsed .logo-text,
@@ -258,4 +264,3 @@
     transform: rotate(180deg);
   }
 
-  

@@ -1,68 +1,58 @@
-// fenix-react-dev/src/data/tuningOptionsData.ts
+// src/data/tuningOptionsData.ts
 import { TuningOption } from '../api/services/tunnigOptions';
 import { bmwDatabase } from './carData';
+import { DeterministicRandom } from '../utils/deterministicRandom';
 
-// Тип для ключей категорий
-type CategoryKey = 'Stage1' | 'ST1' | 'Std' | 'E2' | 'EGRoff' | 'DPFoff' | 'EVAPoff' | 'SAPoff' | 'ADBLUEoff' | 'IMMOoff';
+// Определяем категории прошивок
+type CategoryKey = 'Stage1' | 'Stage2' | 'Stage3' | 'E85' | 'DPFoff' | 'EGRoff' | 'IMMOoff' | 
+  'ADBLUEoff' | 'SAPoff' | 'EVAPoff' | 'Custom' | 'Eco' | 'Valet' | 'Race' | 'ST1' | 'Std' | 'E2';
 
 // Описания категорий прошивок
 const categoryDescriptions: Record<CategoryKey, string> = {
-  Stage1: "Stage1 - общепринятое обозначение стадии тюнинга, при которой меняется только программа управления двигателем (прошивка). При использовании прошивок Stage1, никаких механических доработок двигателя, впуска или выпуска не требуется.",
+  Stage1: "Stage1 - При использовании прошивок Stage1, никаких механических доработок двигателя, впуска или выпуска не требуется.",
+  Stage2: "Stage2 - прошивка для двигателя с доработанным железом: интеркулер, выхлопная система, воздушный фильтр.",
+  Stage3: "Stage3 - максимальный тюнинг с серьезными доработками двигателя, турбины и других компонентов.",
+  E85: "E85 - прошивка для работы на биоэтаноле (смесь 85% этанола и 15% бензина).",
+  DPFoff: "DPFoff - прошивка с отключенной системой сажевого фильтра.",
+  EGRoff: "EGRoff - прошивка с отключенной системой ЕГР.",
+  IMMOoff: "IMMOoff - прошивка с отключенным опросом иммобилайзера.",
+  ADBLUEoff: "ADBLUEoff - прошивка с отключенной системой подачи мочевины.",
+  SAPoff: "SAPoff - прошивка с отключенной системой вторичного воздуха.",
+  EVAPoff: "EVAPoff - прошивка с отключенной системой адсорбера.",
+  Custom: "Custom - кастомная прошивка под индивидуальные требования.",
+  Eco: "Eco - эко-прошивка для снижения расхода топлива.",
+  Valet: "Valet - валет-режим с ограничением мощности.",
+  Race: "Race - гоночная прошивка для трека.",
   ST1: "ST1 - прошивки на бензиновые атмосферные двигателя, где программный тюнинг не дает ощутимого прироста мощности, но улучшает отзывчивость и динамику.",
   Std: "Std - стандартная заводская прошивка, без улучшения силовых характеристик двигателя.",
-  E2: "E2 - (Евро-2) - прошивка с отключенным контролем катализатора и отключенным задним датчиком кислорода.",
-  EGRoff: "EGRoff - прошивка с отключенной системой ЕГР.",
-  DPFoff: "DPFoff - прошивка с отключенной системой сажевого фильтра.",
-  EVAPoff: "EVAPoff - прошивка с отключенной системой адсорбера.",
-  SAPoff: "SAPoff - прошивка с отключенной системой вторичного воздуха.",
-  ADBLUEoff: "ADBLUEoff - прошивка с отключенной системой подачи мочевины.",
-  IMMOoff: "IMMOoff - прошивка с отключенным опросом иммобилайзера."
+  E2: "E2 - (Евро-2) - прошивка с отключенным контролем катализатора и отключенным задним датчиком кислорода."
 };
 
-// Генератор случайных цен в зависимости от категории
-const generatePrice = (category: CategoryKey): number => {
-  const priceRanges: Record<CategoryKey, [number, number]> = {
-    Stage1: [15000, 25000],
-    ST1: [8000, 15000],
-    Std: [0, 0],
-    E2: [5000, 10000],
-    EGRoff: [5000, 8000],
-    DPFoff: [7000, 12000],
-    EVAPoff: [4000, 7000],
-    SAPoff: [4000, 7000],
-    ADBLUEoff: [8000, 15000],
-    IMMOoff: [3000, 6000]
-  };
-
-  const [min, max] = priceRanges[category];
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+// Helper function to safely get category description
+const getCategoryDescriptionSafe = (category: string): string => {
+  return categoryDescriptions[category as CategoryKey] || 'Описание недоступно';
 };
 
-// Генерация прошивок для всех двигателей BMW
+// Генерация опций тюнинга для всех двигателей BMW
+// Генерация опций тюнинга для всех двигателей BMW
 const generateTuningOptions = (): TuningOption[] => {
   const options: TuningOption[] = [];
   let id = 1;
 
-  // Категории прошивок
+  // Категории прошивок - используем ВСЕ категории
   const categories = Object.keys(categoryDescriptions) as CategoryKey[];
 
   bmwDatabase.models.forEach(model => {
     model.generations.forEach(generation => {
       generation.engines.forEach(engine => {
-        // Для каждого двигателя создаем несколько вариантов прошивок
-        const selectedCategories = categories
-          .sort(() => Math.random() - 0.5)
-          .slice(0, Math.floor(Math.random() * 3) + 2); // 2-4 прошивки на двигатель
-
-        selectedCategories.forEach(category => {
-          const price = generatePrice(category);
-          
+        // Для каждого двигателя создаем опции для ВСЕХ категорий
+        categories.forEach((category: CategoryKey) => {
           options.push({
             id: id++,
             name: `${category} ${engine.split(' ')[0]} ${model.name} ${generation.years}`,
-            description: `${categoryDescriptions[category]}\n\nПрименение: ${model.name} ${generation.years} ${generation.body}, двигатель: ${engine}`,
+            description: `${getCategoryDescriptionSafe(category)}`,
             category,
-            price: price === 0 ? undefined : price
+            engineCode: engine
           });
         });
       });
@@ -77,7 +67,7 @@ export const tuningOptionsData: TuningOption[] = generateTuningOptions();
 // Утилиты для работы с данными прошивок
 export const getTuningOptionsByEngine = (engineCode: string): TuningOption[] => {
   return tuningOptionsData.filter(option => 
-    option.description?.includes(engineCode)
+    option.engineCode === engineCode
   );
 };
 
@@ -85,10 +75,10 @@ export const getTuningOptionsByCategory = (category: string): TuningOption[] => 
   return tuningOptionsData.filter(option => option.category === category);
 };
 
-export const getCategories = (): string[] => {
-  return Object.keys(categoryDescriptions);
+export const getCategories = (): CategoryKey[] => {
+  return Object.keys(categoryDescriptions) as CategoryKey[];
 };
 
 export const getCategoryDescription = (category: string): string => {
-  return categoryDescriptions[category as CategoryKey] || '';
+  return getCategoryDescriptionSafe(category);
 };

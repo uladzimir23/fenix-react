@@ -3,6 +3,19 @@
   background-color: var(--bg-primary);
 }
 
+body {
+  background-color: var(--bg-primary);
+  transition: background-color 0.3s ease;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -41,12 +54,13 @@
 .App {
   display: flex;
   min-height: 100vh;
+  justify-content: start;
 }
 
 .main-content {
   flex: 1;
   padding: 0px;
-  margin-left: 275px;
+  margin-left: 285px;
   transition: margin-left 0.3s ease;
 }
 
@@ -58,8 +72,7 @@
 
 .page {
   padding: 0px;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: auto;
   background-color: var(--bg-primary);
 }
 
@@ -70,8 +83,7 @@
 
 .page p {
   color: var(--text-secondary);
-  line-height: 1.6;
-  font-size: 18px;
+  line-height: 1.2;
 }
 
 /* Иконки */
@@ -89,27 +101,48 @@ svg {
 }
 
 body.side-nav-collapsed .main-content {
-  margin-left: 95px;
+  margin-left: 85px;
 }
 
 /* CSS переменные для светлой темы */
 :root {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
+  --black-white: black;
+  --bg-primary: white;
+  --bg-primary-opacity: rgba(255, 255, 255, 0.8);
+  --bg-secondary:#F2FBFE;
+  --bg-thirdly: #F2FBFE;
+  --bg-fourthly: #e8f8ff;
   --text-primary: #212529;
   --text-secondary: #6c757d;
-  --primary-color: #007bff;
-  --accent-color: #e3f2fd;
+  --text-thiirdly: #6c757d;
+  --primary-color: #569cfe;
+  --primary-color-red: #ff0000;
+  --accent-color: #E6F7FD;
+  --accent-color-red: #ff000020;
   --border-color: #dee2e6;
+  --border-color-accent: #89bbf0;
+  --box-shadow-primary: 0px 0px 2px 1px #223c501a;
+
+
 }
 
 /* CSS переменные для темной темы */
 body.dark-theme {
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #222222;
+  --black-white: white;
+  --bg-primary: #151517;
+  --bg-primary-opacity: rgba(21, 21, 23, 0.8);
+  --bg-secondary: #56aafe08;
+  --bg-thirdly: #1b1b2378;
+  --bg-fourthly: #56aafe12;
   --text-primary: #ffffff;
   --text-secondary: #adb5bd;
-  --primary-color: #4dabf7;
-  --accent-color: #2c3e50;
-  --border-color: #2a2e32;
+  --text-thirdly: #adb5bd8b;
+  --primary-color: #56aafe;
+  --primary-color-red: #ff0000;
+  --accent-color: #56aafe15;
+  --accent-color-red: #321919;
+  --border-color: #26292d;
+  --border-color-accent: #1E4765;
+  --box-shadow-primary: 0px 0px 2px 1px #223c5075;
+
 }

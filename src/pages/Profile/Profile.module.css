@@ -1,112 +1,353 @@
 .page {
     padding: 20px;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
-.loading {
-    text-align: center;
-    padding: 40px;
-    color: #666;
-    font-size: 18px;
+.profileHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
 }
 
-.errorMessage {
-    text-align: center;
-    padding: 40px;
-    color: #d32f2f;
-    background-color: #ffebee;
-    border-radius: 8px;
-    border: 1px solid #ffcdd2;
+.profileHeader h1 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 24px;
 }
 
-.errorMessage p {
-    margin: 5px 0;
+.logoutButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    background: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.logoutButton:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.profileContainer {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 20px;
 }
 
 .profileCard {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    margin-top: 20px;
-}
-
-.profileHeader {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 22px;
     padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-.profileHeader h2 {
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.cardHeader h2 {
     margin: 0;
-    font-size: 1.5rem;
+    color: var(--text-primary);
+    font-size: 20px;
+}
+
+.editButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    background: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.editButton:hover {
+    background: var(--primary-color);
+    color: white;
 }
 
 .profileContent {
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .profileField {
     display: flex;
+    align-items: flex-start;
+    padding: 15px;
+    border-radius: 12px;
+    background: var(--bg-secondary);
+    transition: all 0.2s ease;
+}
+
+.profileField:hover {
+    background: var(--bg-tertiary);
+}
+
+.fieldLabel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 180px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.fieldIcon {
+    color: var(--primary-color);
+}
+
+.fieldValue {
+    flex: 1;
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px solid #eee;
+    color: var(--text-primary);
 }
 
-.profileField:last-child {
-    border-bottom: none;
+.editFieldButton {
+    padding: 8px;
+    background: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-.profileField label {
-    font-weight: 600;
-    color: #555;
-    min-width: 150px;
+.editFieldButton:hover {
+    background: var(--primary-color);
+    color: white;
 }
 
-.profileField span {
-    color: #333;
-    text-align: right;
+.editField {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.inputField {
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 14px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.inputField:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.nameFields, .passwordFields {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.editActions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.saveButton {
+    padding: 10px 15px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.saveButton:hover {
+    background: var(--primary-dark);
+}
+
+.cancelButton {
+    padding: 10px 15px;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.cancelButton:hover {
+    background: var(--border-color);
 }
 
 .roleBadge {
-    padding: 4px 12px;
+    padding: 6px 12px;
     border-radius: 20px;
     font-size: 0.85rem;
     font-weight: 500;
 }
 
 .admin {
-    background-color: #ffeb3b;
-    color: #333;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
 }
 
 .user {
-    background-color: #e3f2fd;
-    color: #1976d2;
+    background-color: var(--bg-tertiary);
+    color: var(--text-secondary);
 }
 
 .userId {
     font-family: 'Courier New', monospace;
-    background-color: #f5f5f5;
-    padding: 2px 6px;
-    border-radius: 4px;
+    background-color: var(--bg-tertiary);
+    padding: 4px 8px;
+    border-radius: 6px;
     font-size: 0.9rem;
 }
 
-@media (max-width: 600px) {
-    .profileField {
+.additionalFeatures {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 22px;
+    padding: 20px;
+    height: fit-content;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.additionalFeatures h3 {
+    margin: 0 0 15px 0;
+    color: var(--text-primary);
+    font-size: 18px;
+}
+
+.featureList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.featureButton {
+    padding: 12px 15px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+}
+
+.featureButton:hover {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-secondary);
+    font-size: 18px;
+}
+
+.errorMessage {
+    text-align: center;
+    padding: 40px;
+    color: var(--error-color);
+    background-color: var(--error-bg);
+    border-radius: 12px;
+    border: 1px solid var(--error-border);
+}
+
+.errorMessage p {
+    margin: 5px 0;
+}
+
+@media (max-width: 968px) {
+    .profileContainer {
+        grid-template-columns: 1fr;
+    }
+    
+    .profileHeader {
         flex-direction: column;
         align-items: flex-start;
-        gap: 4px;
+        gap: 15px;
     }
-
-    .profileField span {
-        text-align: left;
+    
+    .profileField {
+        flex-direction: column;
+        gap: 10px;
     }
-
-    .profileField label {
+    
+    .fieldLabel {
         min-width: auto;
+    }
+    
+    .fieldValue {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .page {
+        padding: 15px;
+    }
+    
+    .profileCard, .additionalFeatures {
+        padding: 15px;
+    }
+    
+    .cardHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .editActions {
+        flex-direction: column;
+    }
+    
+    .saveButton, .cancelButton {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .profileHeader h1 {
+        font-size: 20px;
+    }
+    
+    .cardHeader h2 {
+        font-size: 18px;
+    }
+    
+    .logoutButton, .editButton {
+        width: 100%;
+        justify-content: center;
     }
 }

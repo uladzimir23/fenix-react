@@ -1,10 +1,20 @@
 import * as React from 'react';
 import {useState} from 'react';
-import {FaBell, FaBriefcase, FaComments, FaMoon, FaSun, FaThLarge,} from 'react-icons/fa';
+import {
+  FaUser,               // Профиль
+  FaMagnifyingGlass,    // Каталог
+  FaFolderOpen,         // Файлы
+  FaMessage,            // Сообщения
+  FaGear,               // Test API
+  FaMoon, 
+  FaSun,
+} from 'react-icons/fa6';
+import { FaThLarge as FaThLargeLegacy } from 'react-icons/fa'; // Для логотипа
 import {useLocation, useNavigate} from 'react-router-dom';
 import Icon from '../ui/Icon';
 import './SideNav.css';
 import {IconType} from "react-icons";
+import { useEffect } from 'react';
 
 interface NavItem {
     id: number;
@@ -47,47 +57,68 @@ const SideNav: React.FC = () => {
         if (path === '/catalog') return 2;
         if (path === '/files') return 3;
         if (path === '/messages') return 4;
-        if (path === '/register') return 5;
+        if (path === '/test-api') return 5;
         return 1;
     };
 
     const selectedNav = getActivePage();
 
     const navItems: NavItem[] = [
-        {id: 1, icon: FaThLarge, label: 'Профиль', path: '/profile'},
-        {id: 2, icon: FaComments, label: 'Каталог', path: '/catalog'},
-        {id: 3, icon: FaBriefcase, label: 'Ваши файлы', path: '/files'},
-        {id: 4, icon: FaBell, label: 'Сообщения', path: '/messages', badge: 12},
-        {
-            id: 5,
-            icon: FaComments,
-            label: 'test-api',
-            path: '/test-api'
-        },
+        {id: 1, icon: FaUser, label: 'Профиль', path: '/profile'},
+        {id: 2, icon: FaMagnifyingGlass, label: 'Каталог', path: '/catalog'},
+        {id: 3, icon: FaFolderOpen, label: 'Ваши файлы', path: '/files'},
+        {id: 4, icon: FaMessage, label: 'Сообщения', path: '/messages', badge: 12},
+        {id: 5, icon: FaGear, label: 'test-api', path: '/test-api'},
     ];
 
     const handleItemClick = (path: string) => {
         navigate(path);
     };
 
+    useEffect(() => {
+        // Проверяем, есть ли сохраненная тема в localStorage
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            setIsDarkMode(true);
+            document.body.classList.add('dark-theme');
+            document.body.style.backgroundColor = '#1a1a1a';
+        }
+        
+        // Или проверяем системные настройки
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (prefersDark && !savedTheme) {
+            setIsDarkMode(true);
+            document.body.classList.add('dark-theme');
+            document.body.style.backgroundColor = '#1a1a1a';
+        }
+    }, []);
+
     const toggleTheme = () => {
-        setIsDarkMode(!isDarkMode);
-        document.body.classList.toggle('dark-theme');
+        const newDarkMode = !isDarkMode;
+        setIsDarkMode(newDarkMode);
+        
+        if (newDarkMode) {
+            document.body.classList.add('dark-theme');
+            document.body.style.backgroundColor = '#1a1a1a';
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.body.classList.remove('dark-theme');
+            document.body.style.backgroundColor = '#ffffff';
+            localStorage.setItem('theme', 'light');
+        }
     };
 
     return (
         <div className={`side-nav ${isCollapsed ? 'collapsed' : ''}`}>
             <div className="nav-content">
                 <div className="logo-section" onClick={() => navigate('/')}>
-                    <Icon icon={FaThLarge} className="logo-icon"/>
+                    <Icon icon={FaThLargeLegacy} className="logo-icon"/>
                     <span className="logo-text">Fenix</span>
                 </div>
 
                 <div className={`collapse-toggle ${isCollapsed ? 'collapsed' : ''}`} onClick={toggleCollapse}>
                     <ChevronIcon isCollapsed={isCollapsed} />
                 </div>
-
-                <div className="divider"/>
 
                 <div className="nav-section">
                     <div className="section-label">Навигация</div>
@@ -108,15 +139,15 @@ const SideNav: React.FC = () => {
 
                 <div className="theme-switcher">
                     <div
-                        className={`theme-option ${!isDarkMode ? 'active' : ''}`}
-                        onClick={() => !isDarkMode && toggleTheme()}
+                        className={`theme-option ${isDarkMode ? 'active' : ''}`}
+                        onClick={() => isDarkMode && toggleTheme()}
                     >
                         <Icon icon={FaSun} className="theme-icon"/>
                         <span>Светлая тема</span>
                     </div>
                     <div
-                        className={`theme-option ${isDarkMode ? 'active' : ''}`}
-                        onClick={() => isDarkMode && toggleTheme()}
+                        className={`theme-option ${!isDarkMode ? 'active' : ''}`}
+                        onClick={() => !isDarkMode && toggleTheme()}
                     >
                         <Icon icon={FaMoon} className="theme-icon"/>
                         <span>Темная тема</span>

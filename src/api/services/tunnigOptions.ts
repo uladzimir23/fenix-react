@@ -1,14 +1,19 @@
 // src/api/services/tuningOptions.ts
 import { apiClient } from '../apiClient';
 
+// src/api/services/tunnigOptions.ts
 export interface TuningOption {
     id: number;
     name: string;
     description?: string;
     category: string;
     price?: number;
-}
+    engineCode?: string;
+    count?: number; // Добавляем необязательное поле
 
+  }
+
+  
 export const tuningOptionsService = {
     // GET /tuning-options
     getAll: () =>

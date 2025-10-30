@@ -1,0 +1,363 @@
+.firmware-detail-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    opacity: 0;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    pointer-events: none;
+  }
+  
+  .firmware-detail-overlay.visible {
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .firmware-detail-overlay.closing {
+    background-color: rgba(0, 0, 0, 0);
+    opacity: 0;
+  }
+  
+  .firmware-detail-modal {
+    background: var(--bg-primary);
+    border-radius: 28px;
+    max-width: 1200px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--box-shadow-primary);
+    border: 1px solid var(--border-color);
+    transform: translateY(100px) scale(0.95);
+    opacity: 0;
+    transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28), 
+                opacity 0.3s ease,
+                box-shadow 0.3s ease;
+  }
+  
+  .firmware-detail-modal.visible {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  
+  .firmware-detail-modal.closing {
+    transform: translateY(100px) scale(0.95);
+    opacity: 0;
+  }
+  
+  /* Остальные стили без изменений */
+  .firmware-basic-info.firmware-price.price {
+    margin: 0 !important;
+  }
+  
+  .content-card.detailed.firmware-main-card:hover {
+    scale: 0.998 !important;
+  }
+
+.content-card.detailed.firmware-second-card:hover {
+    scale: 0.998 !important;
+  }
+  
+  .firmware-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 25px;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    background: var(--bg-primary);
+    z-index: 10;
+    border-radius: 22px 22px 0 0;
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    width: 100%;
+    margin-right: 20px;
+    align-content: flex-start;
+    align-items: flex-start
+
+
+  }
+  
+  .firmware-detail-header h2 {
+    margin: 0 0 10px 0;
+    color: var(--text-primary);
+    font-size: 24px;
+  }
+  
+  .firmware-meta-header {
+    display: flex;
+    gap: 15px;
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+  }
+  
+  .close-button:hover {
+    color: var(--primary-color-red);
+    background: var(--accent-color-red);
+    border-radius: 10px;
+    scale: 0.97;
+
+  }
+  
+  .firmware-detail-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 8px;
+    padding: 25px;
+  }
+  
+  .firmware-detail-main {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .firmware-detail-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .firmware-main-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .firmware-basic-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .firmware-meta-header-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .category-badge-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+  }
+  
+  .firmware-meta-card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+    justify-content: flex-start;
+  }
+  
+  .category-badge {
+    display: inline-block;
+    background: var(--accent-color);
+    color: var(--primary-color);
+    padding: 12px 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    width: fit-content;
+  }
+  
+  .car-info {
+    font-size: 16px;
+    color: var(--text-secondary);
+  }
+  
+  .firmware-price {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    gap: 10px;
+  }
+  
+  .firmware-price .price{
+    font-size: 24px !important;
+    font-weight: bold;
+    color: var(--text-primary);
+    margin: 0;
+    
+  }
+  
+  .buy-button {
+    background: var(--primary-color);
+    color: var(--bg-primary);
+    border: none;
+    font-size: 14px;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+  }
+  
+  .buy-button:hover {
+    color: var(--primary-color);
+    background: var(--accent-color);
+    transform: translateY(0px);
+    box-shadow: inset 0px 0px 3px #359dff80;
+    border: 1px solid #359dff80;
+    scale: 0.98;
+    border-radius: 14px;
+
+  }
+
+  .firmware-description {
+    margin-bottom: 15px;
+  }
+  
+  .firmware-description h3,
+  .firmware-specs h3,
+  .firmware-requirements h3,
+  .firmware-compatibility h3,
+  .firmware-changelog h3,
+  .author-info h3,
+  .file-info h3,
+  .tools-info h3,
+  .known-issues h3,
+  .installation-info h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--accent-color);
+  }
+  
+  .specs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 12px;
+  }
+  
+  .spec-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .spec-label {
+    font-weight: bold;
+    color: var(--text-primary);
+    font-size: 14px;
+  }
+  
+  .spec-value {
+    color: var(--text-secondary);
+    font-size: 14px;
+  }
+  
+  .firmware-requirements ul,
+  .tools-info ul {
+    padding-left: 20px;
+    margin: 0;
+  }
+  
+  .firmware-requirements li,
+  .tools-info li {
+    margin-bottom: 8px;
+    color: var(--text-primary);
+  }
+  
+  .firmware-changelog pre {
+    background: var(--bg-secondary);
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    font-family: inherit;
+    font-size: 13px;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+  }
+  
+  .author-info p,
+  .file-info p,
+  .known-issues p,
+  .installation-info p {
+    margin: 0 0 8px 0;
+    color: var(--text-primary);
+    font-size: 14px;
+  }
+  
+  .file-info p {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .file-info p span:first-child {
+    font-weight: bold;
+    color: var(--text-secondary);
+  }
+  
+  @media (max-width: 968px) {
+    .firmware-detail-content {
+      grid-template-columns: 1fr;
+    }
+    
+    .firmware-basic-info {
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .firmware-price {
+      align-items: flex-start;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .firmware-detail-overlay {
+      padding: 10px;
+    }
+    
+    .firmware-detail-modal {
+      max-height: 95vh;
+      border-radius: 22px;
+    }
+    
+    .firmware-detail-header {
+      padding: 20px;
+    }
+    
+    .firmware-detail-content {
+      padding: 20px;
+    }
+    
+    .specs-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .firmware-meta-header {
+      flex-wrap: wrap;
+    }
+  }
