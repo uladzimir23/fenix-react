@@ -21,31 +21,31 @@ const App: React.FC = () => {
                     <main className="main-content">
                         <Routes>
                             {/* Публичный маршрут */}
-                            <Route path="/login" element={<Login/>}/>
-                            <Route path="/test-api" element={<ApiTester/>}/>
+                            <Route path="/fenix-react/login" element={<Login/>}/>
+                            <Route path="/fenix-react/test-api" element={<ApiTester/>}/>
 
                             {/* Защищенные маршруты */}
-                            <Route path="/" element={
+                            <Route path="/fenix-react" element={
                                 <ProtectedRoute>
                                     <Home/>
                                 </ProtectedRoute>
                             }/>
-                            <Route path="/profile" element={
+                            <Route path="/fenix-react/profile" element={
                                 <ProtectedRoute>
                                     <Profile/>
                                 </ProtectedRoute>
                             }/>
-                            <Route path="/catalog" element={
+                            <Route path="/fenix-react/catalog" element={
                                 <ProtectedRoute>
                                     <Catalog/>
                                 </ProtectedRoute>
                             }/>
-                            <Route path="/files" element={
+                            <Route path="/fenix-react/files" element={
                                 <ProtectedRoute>
                                     <Files/>
                                 </ProtectedRoute>
                             }/>
-                            <Route path="/messages" element={
+                            <Route path="/fenix-react/messages" element={
                                 <ProtectedRoute>
                                     <Messages/>
                                 </ProtectedRoute>
