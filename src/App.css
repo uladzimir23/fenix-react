@@ -36,3 +36,55 @@
     transform: rotate(360deg);
   }
 }
+<<<<<<< HEAD
+=======
+
+.App {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding: 0px;
+  margin-left: 275px;
+  transition: margin-left 0.3s ease;
+}
+
+@media (max-width: 767px) {
+  .main-content {
+    margin-left: 0;
+  }
+}
+
+.page {
+  padding: 0px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page h1 {
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+.page p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+/* Иконки */
+svg {
+  transition: all 0.2s ease;
+}
+
+/* Анимации */
+.filter-button, .dropdown-item, .car-card {
+  transition: all 0.2s ease;
+}
+
+.filter-button:active, .dropdown-item:active {
+  transform: scale(0.98);
+}
+>>>>>>> dev
