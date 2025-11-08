@@ -36,8 +36,6 @@
     transform: rotate(360deg);
   }
 }
-<<<<<<< HEAD
-=======
 
 .App {
   display: flex;
@@ -87,4 +85,3 @@ svg {
 .filter-button:active, .dropdown-item:active {
   transform: scale(0.98);
 }
->>>>>>> dev
